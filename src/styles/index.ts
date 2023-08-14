@@ -4,7 +4,7 @@ const EstiloGlobal = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
-    borx-sizing: border-box;
+    box-sizing: border-box;
     font-family: Roboto, sans-serif;
   }
 `
