@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 import { Props } from '.'
 
-export const Card = styled.div<Props>`
+// Criada nova Props SEM as propriedades de contador e legenda (não faz sentido utiliza-las aqui)
+type PropsAtivo = Omit<Props, 'contador' | 'legenda'>
+
+export const Card = styled.div<PropsAtivo>`
   padding: 8px;
   color: ${(props) => (props.ativo ? '#1e90ff' : '#5e5e5e')};
   background-color: ${(props) => (props.ativo ? '#fff' : '#fcfcfc')};
