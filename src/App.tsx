@@ -1,8 +1,16 @@
+import ListaTarefas from './containers/Lista de Tarefas'
+import Aside from './containers/aside'
+import EstiloGlobal, { Container } from './styles'
+
 function App() {
   return (
-    <div className="App">
-      <h1>Olá</h1>
-    </div>
+    <>
+      <EstiloGlobal />
+      <Container>
+        <Aside />
+        <ListaTarefas />
+      </Container>
+    </>
   )
 }
 
