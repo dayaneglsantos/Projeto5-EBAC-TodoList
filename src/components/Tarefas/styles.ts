@@ -1,18 +1,20 @@
 import styled from 'styled-components'
 import { Cores } from '../../styles/cores'
+import * as Enums from '../../utils/enums/tarefa'
 
 type TagProps = {
-  prioridade?: string
-  status?: string
+  prioridade?: Enums.Prioridade
+  status?: Enums.Status
+  parametro: 'prioridade' | 'status'
 }
 
 const trocaBgColor = (props: TagProps) => {
-  if ('prioridade' in props) {
-    if (props.prioridade === 'importante') return Cores.laranja
-    if (props.prioridade === 'urgente') return Cores.vermelho
-  } else if ('status' in props) {
-    if (props.status === 'pendente') return Cores.amarelo
-    if (props.status === 'concluída') return Cores.verde
+  if (props.parametro === 'prioridade') {
+    if (Enums.Prioridade.IMPORTANTE) return Cores.laranja
+    if (Enums.Prioridade.URGENTE) return Cores.vermelho
+  } else {
+    if (Enums.Status.PENDENTE) return Cores.amarelo
+    if (Enums.Status.CONCLUIDA) return Cores.verde
   }
   return '#aaa'
 }
