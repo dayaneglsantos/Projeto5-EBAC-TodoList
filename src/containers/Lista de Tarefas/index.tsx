@@ -5,26 +5,26 @@ const listaTarefas = [
   {
     titulo: 'Título 1',
     descricao: 'Descrição 1',
-    prioridade: 'Importante',
-    status: 'Concluida'
+    prioridade: 'importante',
+    status: 'concluída'
   },
   {
     titulo: 'Título 2',
     descricao: 'Descrição 2',
-    prioridade: 'Importante',
-    status: 'Pendente'
+    prioridade: 'importante',
+    status: 'pendente'
   },
   {
     titulo: 'Título 3',
     descricao: 'Descrição 3',
-    prioridade: 'Normal',
-    status: 'Concluida'
+    prioridade: 'normal',
+    status: 'concluída'
   },
   {
     titulo: 'Título 3',
     descricao: 'Descrição 3',
-    prioridade: 'Urgente',
-    status: 'Pendente'
+    prioridade: 'urgente',
+    status: 'pendente'
   }
 ]
 

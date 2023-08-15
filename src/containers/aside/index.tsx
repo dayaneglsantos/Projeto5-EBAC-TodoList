@@ -6,7 +6,7 @@ const Aside = () => (
     <div>
       <S.Input type="text" placeholder="Buscar" />
       <S.Filtros>
-        <FiltroCard legenda="Pendetes" contador={1} />
+        <FiltroCard legenda="Pendentes" contador={1} />
         <FiltroCard legenda="Concluídas" contador={1} />
         <FiltroCard legenda="Urgentes" contador={1} />
         <FiltroCard legenda="Importantes" contador={1} />
