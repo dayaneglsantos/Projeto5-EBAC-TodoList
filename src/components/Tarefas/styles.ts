@@ -72,6 +72,7 @@ export const Botao = styled.button`
   border: none;
   border-radius: 8px;
   color: #fff;
+  cursor: pointer;
 `
 export const BotaoRemoverCancelar = styled(Botao)`
   background-color: ${Cores.vermelho};
