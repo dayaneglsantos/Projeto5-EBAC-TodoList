@@ -3,6 +3,7 @@ import FiltroCard from '../../components/FiltroCard'
 import * as S from './styles'
 import { RootReducer } from '../../store'
 import { alteraTermo } from '../../store/reducers/filtro'
+import * as enums from '../../utils/enums/tarefa'
 
 const Aside = () => {
   const dispatch = useDispatch()
@@ -18,12 +19,32 @@ const Aside = () => {
           onChange={(e) => dispatch(alteraTermo(e.target.value))}
         />
         <S.Filtros>
-          <FiltroCard legenda="Pendentes" contador={1} />
-          <FiltroCard legenda="Concluídas" contador={1} />
-          <FiltroCard legenda="Urgentes" contador={1} />
-          <FiltroCard legenda="Importantes" contador={1} />
-          <FiltroCard legenda="Normal" contador={1} />
-          <FiltroCard ativo legenda="Total" contador={1} />
+          <FiltroCard
+            criterio="status"
+            valor={enums.Status.PENDENTE}
+            legenda="Pendentes"
+          />
+          <FiltroCard
+            criterio="status"
+            valor={enums.Status.CONCLUIDA}
+            legenda="Concluídas"
+          />
+          <FiltroCard
+            criterio="prioridade"
+            valor={enums.Prioridade.URGENTE}
+            legenda="Urgentes"
+          />
+          <FiltroCard
+            valor={enums.Prioridade.IMPORTANTE}
+            legenda="Importantes"
+            criterio="prioridade"
+          />
+          <FiltroCard
+            criterio="prioridade"
+            valor={enums.Prioridade.NORMAL}
+            legenda="Normal"
+          />
+          <FiltroCard criterio="todas" legenda="Total" />
         </S.Filtros>
       </div>
     </S.Aside>

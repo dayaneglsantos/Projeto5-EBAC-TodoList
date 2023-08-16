@@ -17,16 +17,30 @@ const initialState: TarefasState = {
     },
     {
       titulo: 'Titulo 2',
-      prioridade: Enums.Prioridade.IMPORTANTE,
+      prioridade: Enums.Prioridade.NORMAL,
       descricao: 'Descrição 2',
-      status: Enums.Status.CONCLUIDA,
+      status: Enums.Status.PENDENTE,
       id: 2
     },
     {
       titulo: 'Titulo 3',
-      prioridade: Enums.Prioridade.IMPORTANTE,
+      prioridade: Enums.Prioridade.URGENTE,
       descricao: 'Descrição 3',
       status: Enums.Status.CONCLUIDA,
+      id: 3
+    },
+    {
+      titulo: 'Typescript',
+      prioridade: Enums.Prioridade.NORMAL,
+      descricao: 'Descrição 3',
+      status: Enums.Status.CONCLUIDA,
+      id: 3
+    },
+    {
+      titulo: 'Javascript',
+      prioridade: Enums.Prioridade.URGENTE,
+      descricao: 'Descrição 3',
+      status: Enums.Status.PENDENTE,
       id: 3
     }
   ]
