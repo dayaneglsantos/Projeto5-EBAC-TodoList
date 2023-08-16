@@ -5,12 +5,19 @@ import { RootReducer } from '../../store'
 
 const ListaTarefas = () => {
   const { itens } = useSelector((state: RootReducer) => state.tarefas)
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
+
+  const filtraTarefas = () => {
+    return itens.filter(
+      (it) => it.titulo.toLowerCase().search(termo.toLowerCase()) >= 0
+    )
+  }
 
   return (
     <Container>
-      <p>X tarefas marcadas como: --categoria-- e --termo--</p>
+      <p>X tarefas marcadas como: --categoria-- e {termo}</p>
       <ul>
-        {itens.map((t) => (
+        {filtraTarefas().map((t) => (
           <li key={t.titulo}>
             <Tarefa
               id={t.id}

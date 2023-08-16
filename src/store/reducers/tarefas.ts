@@ -54,5 +54,3 @@ const tarefasSlice = createSlice({
 export const { remover, editar } = tarefasSlice.actions
 
 export default tarefasSlice.reducer
-
-// action.payload = tarefa
