@@ -1,14 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
 import TarefaClass from '../../models/tarefa'
-import { remover } from '../../store/reducers/tarefas'
+import { remover, editar } from '../../store/reducers/tarefas'
 
 type Props = TarefaClass
 
-const Tarefa = ({ descricao, titulo, prioridade, status, id }: Props) => {
+const Tarefa = ({
+  descricao: descricaoOriginal,
+  titulo,
+  prioridade,
+  status,
+  id
+}: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
+  const [descricao, setDescricao] = useState('')
+
+  // Caso tenha uma descrição original, será atribuido no setDescrição. Caso contrário não apareceriam as descrições originais das tarefas, somente as que estariamos editando na hora.
+  useEffect(() => {
+    if (descricaoOriginal.length >= 0) {
+      setDescricao(descricaoOriginal)
+    }
+  }, [descricaoOriginal])
+
+  const cancelarEdicao = () => {
+    setEstaEditando(false)
+    setDescricao(descricaoOriginal)
+  }
+
+  const salvarTarefa = () => {
+    dispatch(editar({ descricao, titulo, prioridade, status, id }))
+
+    setEstaEditando(false)
+  }
 
   return (
     <S.Card>
@@ -19,12 +44,16 @@ const Tarefa = ({ descricao, titulo, prioridade, status, id }: Props) => {
       <S.Tag parametro="status" status={status}>
         {status}
       </S.Tag>
-      <S.Descricao value={descricao} />
+      <S.Descricao
+        value={descricao}
+        disabled={!estaEditando}
+        onChange={(e) => setDescricao(e.target.value)}
+      />
       <S.BarraAcoes>
         {estaEditando ? (
           <>
-            <S.BotaoSalvar>Salvar</S.BotaoSalvar>
-            <S.BotaoRemoverCancelar onClick={() => setEstaEditando(false)}>
+            <S.BotaoSalvar onClick={salvarTarefa}>Salvar</S.BotaoSalvar>
+            <S.BotaoRemoverCancelar onClick={cancelarEdicao}>
               Cancelar
             </S.BotaoRemoverCancelar>
           </>
