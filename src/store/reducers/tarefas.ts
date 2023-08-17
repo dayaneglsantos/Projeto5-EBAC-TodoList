@@ -34,14 +34,14 @@ const initialState: TarefasState = {
       prioridade: Enums.Prioridade.NORMAL,
       descricao: 'Descrição 3',
       status: Enums.Status.CONCLUIDA,
-      id: 3
+      id: 4
     },
     {
       titulo: 'Javascript',
       prioridade: Enums.Prioridade.URGENTE,
       descricao: 'Descrição 3',
       status: Enums.Status.PENDENTE,
-      id: 3
+      id: 5
     }
   ]
 }
@@ -62,7 +62,7 @@ const tarefasSlice = createSlice({
         state.itens[indexDaTarefa] = action.payload
       }
     },
-    cadastrar: (state, action: PayloadAction<Tarefa>) => {
+    cadastrar: (state, action: PayloadAction<Omit<Tarefa, 'id'>>) => {
       const tarefaJaExiste = state.itens.find(
         (t) => t.titulo.toLowerCase() === action.payload.titulo.toLowerCase()
       )
@@ -70,12 +70,31 @@ const tarefasSlice = createSlice({
       if (tarefaJaExiste) {
         alert('Já existe uma tarefa com mesmo título')
       } else {
-        state.itens.push(action.payload)
+        const ultimaTarefa = state.itens[state.itens.length - 1]
+        const novaTarefa = {
+          ...action.payload,
+          id: ultimaTarefa ? ultimaTarefa.id + 1 : 1
+        }
+        state.itens.push(novaTarefa)
+      }
+    },
+    alteraStatus: (
+      state,
+      action: PayloadAction<{ id: number; finalizado: boolean }>
+    ) => {
+      const indexDaTarefa = state.itens.findIndex(
+        (t) => t.id === action.payload.id
+      )
+
+      if (indexDaTarefa >= 0) {
+        state.itens[indexDaTarefa].status = action.payload.finalizado
+          ? Enums.Status.CONCLUIDA
+          : Enums.Status.PENDENTE
       }
     }
   }
 })
 
-export const { remover, editar, cadastrar } = tarefasSlice.actions
+export const { remover, editar, cadastrar, alteraStatus } = tarefasSlice.actions
 
 export default tarefasSlice.reducer

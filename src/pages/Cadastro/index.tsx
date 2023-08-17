@@ -3,7 +3,7 @@ import Formulario from '../../containers/formulario'
 
 const Cadastro = () => (
   <>
-    <Aside />
+    <Aside mostraFiltroCard={false} />
     <Formulario />
   </>
 )

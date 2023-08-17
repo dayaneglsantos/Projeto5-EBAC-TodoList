@@ -4,7 +4,7 @@ import Aside from '../../containers/aside'
 
 const Home = () => (
   <>
-    <Aside />
+    <Aside mostraFiltroCard />
     <ListaTarefas />
     <BotaoAdicionar />
   </>

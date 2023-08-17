@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Cores } from '../../styles/cores'
 import * as Enums from '../../utils/enums/tarefa'
+import { Botao } from '../../styles'
 
 type TagProps = {
   prioridade?: Enums.Prioridade
@@ -25,12 +26,18 @@ export const Card = styled.div`
   margin-bottom: 32px;
   border-radius: 16px;
   box-shadow: 0px 4px 4px 0px #00000040;
+
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
 `
 
 export const Titulo = styled.h3`
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-left: 8px;
 `
 
 export const Tag = styled.span<TagProps>`
@@ -63,17 +70,6 @@ export const BarraAcoes = styled.div`
   padding-top: 16px;
 `
 
-export const Botao = styled.button`
-  background-color: #2f3640;
-  padding: 8px 12px;
-  font-size: 12px;
-  font-weight: bold;
-  margin-right: 8px;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  cursor: pointer;
-`
 export const BotaoRemoverCancelar = styled(Botao)`
   background-color: ${Cores.vermelho};
 `

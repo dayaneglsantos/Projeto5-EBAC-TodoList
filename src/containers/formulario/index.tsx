@@ -21,8 +21,7 @@ const Formulario = () => {
         titulo,
         descricao,
         prioridade,
-        status: enums.Status.PENDENTE,
-        id: 10
+        status: enums.Status.PENDENTE
       })
     )
     navigate('/')
