@@ -77,6 +77,3 @@ export const Botao = styled.button`
 export const BotaoRemoverCancelar = styled(Botao)`
   background-color: ${Cores.vermelho};
 `
-export const BotaoSalvar = styled(Botao)`
-  background-color: ${Cores.verde};
-`
