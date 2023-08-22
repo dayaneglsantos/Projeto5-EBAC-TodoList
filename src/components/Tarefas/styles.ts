@@ -11,11 +11,11 @@ type TagProps = {
 
 const trocaBgColor = (props: TagProps) => {
   if (props.parametro === 'prioridade') {
-    if (Enums.Prioridade.IMPORTANTE) return Cores.laranja
-    if (Enums.Prioridade.URGENTE) return Cores.vermelho
+    if (props.prioridade === Enums.Prioridade.IMPORTANTE) return Cores.laranja
+    if (props.prioridade === Enums.Prioridade.URGENTE) return Cores.vermelho
   } else {
-    if (Enums.Status.PENDENTE) return Cores.amarelo
-    if (Enums.Status.CONCLUIDA) return Cores.verde
+    if (props.status === Enums.Status.PENDENTE) return Cores.amarelo
+    if (props.status === Enums.Status.CONCLUIDA) return Cores.verde
   }
   return '#aaa'
 }
